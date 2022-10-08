@@ -1,0 +1,181 @@
+﻿@model AWC_HRMS.Models.CandidateMaster
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2" >
+
+            
+
+        </div>
+
+        @*<div class="col-md-4 col-sm-12 Font_Color1">
+
+            Personal Details
+
+        </div>
+*@
+
+
+
+    <div class="col-md-8 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:black">
+        
+        <form asp-action="CandidateRegisterationDetail" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateId" class="control-label"></label>
+                <input asp-for="CandidateId" class="form-control" required />
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>*@
+
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.myst" />
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateName" class="control-label"></label>
+                <input asp-for="CandidateName" class="form-control" id="CandidateName" required />
+                <span asp-validation-for="CandidateName" class="text-danger"></span>
+            </div>
+           
+           
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="Gender" class="control-label"></label>
+               &nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Male" id="Male"  required /> Male &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Female" id="Female"  required /> Female &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Other" id="Other"  required /> Other &nbsp;&nbsp;&nbsp;
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="MaritalStatus" class="control-label"></label>
+
+                <input type="radio" asp-for="MaritalStatus" value="Married" id="Married" required /> Married     &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="MaritalStatus" value="Unmarried" id="Unmarried" required /> Unmarried  &nbsp;&nbsp;&nbsp;
+                
+                <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+            </div>
+                   
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="Dob" class="control-label"></label>
+                <input type="date" asp-for="Dob" id="Dob" required class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="CandidateContactNumber" class="control-label"></label>
+                <input asp-for="CandidateContactNumber" id="CandidateContactNumber" required class="form-control" />
+                <span asp-validation-for="CandidateContactNumber" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="FatherName" class="control-label"></label>
+                <input asp-for="FatherName" id="FatherName" required class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="CandidateEmailId" class="control-label"></label>
+                <input type="email" asp-for="CandidateEmailId" id="CandidateEmailId" required class="form-control" />
+                <span asp-validation-for="CandidateEmailId" class="text-danger"></span>
+            </div>
+            
+           
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateImage" class="control-label"></label>
+                <input type="file" name="file" required asp-for="CandidateImage" class="form-control" />
+                <span asp-validation-for="CandidateImage" class="text-danger"></span>
+            </div>*@
+
+                        
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                <input type="submit" class="btn btn-info" value="Save" formaction="" />
+                <!-- <input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailNext/')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetailNext", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+
+            </div>
+            </br>
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        debugger;
+        var data = "@ViewBag.Vals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            document.getElementById("CandidateName").value = sptval0[0];
+            document.getElementById("CandidateEmailId").value = sptval0[1];
+            document.getElementById("CandidateContactNumber").value = sptval0[2];
+            if (sptval0[3] == "Male") {
+                document.getElementById("Male").checked = true;
+            }
+            else if (sptval0[3] == "Female") {
+                document.getElementById("Female").checked = true;
+            }
+            else {
+                //document.getElementById("Other").checked = true;
+            }
+
+            var dob = sptval0[7].split(" ");
+            var dob1 = dob[0].split("-");
+
+            document.getElementById("Dob").value = dob1[2] + "-" + dob1[1] + "-" + dob1[0];
+
+            if (sptval0[8] == "Married") {
+                document.getElementById("Married").checked = true;
+            }
+            else if (sptval0[8] == "Unmarried") {
+                document.getElementById("Unmarried").checked = true;
+            }
+            else {
+
+            }
+
+            document.getElementById("FatherName").value = sptval0[9];
+
+
+        }
+
+
+
+
+
+
+
+    });
+
+</script>

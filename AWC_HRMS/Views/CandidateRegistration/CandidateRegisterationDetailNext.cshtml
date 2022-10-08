@@ -1,0 +1,84 @@
+﻿@model AWC_HRMS.Models.CandidateMaster
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetailNext";
+    Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+     
+}
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<hr />
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2" >
+
+    </div>
+     
+     <div class="col-md-8 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:black">
+        <form asp-action="CandidateRegisterationDetailNext">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <input asp-for="CandidateId" type="hidden" value="@ViewBag.myst" />
+           
+            <div class="form-group">
+                <label asp-for="EmergencyContactName" class="control-label"></label>
+                <input asp-for="EmergencyContactName" id="EmergencyContactName" class="form-control" />
+                <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmergencyContactNo" class="control-label"></label>
+                <input asp-for="EmergencyContactNo" id="EmergencyContactNo" class="form-control" />
+                <span asp-validation-for="EmergencyContactNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmergencyContactRelation" class="control-label"></label>
+                <input asp-for="EmergencyContactRelation" id="EmergencyContactRelation" class="form-control" />
+                <span asp-validation-for="EmergencyContactRelation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="space"> </div>
+                 @*@Html.ActionLink("Back", "CandidateRegisterationDetail", new { /*id=*/})*@
+                <!--<input type="submit" value="Back" formaction=""  class="btn button_color" />-->
+                @Html.ActionLink("Back", "CandidateRegisteration", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                
+                <input type="submit" value="Save" formaction="" class="btn btn-info" />
+                @Html.ActionLink("Next", "CandidateRegisterationDetailAddress", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+
+            </div>
+           
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+
+    
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.Vals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            document.getElementById("EmergencyContactName").value = sptval0[18];
+            document.getElementById("EmergencyContactNo").value = sptval0[19];
+            document.getElementById("EmergencyContactRelation").value = sptval0[20];
+          
+        }
+
+    });
+
+</script>

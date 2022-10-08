@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+@*<h1>Welcome to your Portal </h1>*@
+@*<label>@ViewData["result"]</label>*@
+<style>
+    #tbl{
+          width:100%;
+         
+          color:black;
+    }
+    #tbl1{
+          width:100%;
+         
+          color:black;
+    }
+    #tbl2{
+          width:100%;
+          
+          color:black;
+    }
+
+
+</style>
+
+@*<div class="container">
+    <div class="row">
+        <div class=col-md-6>
+            <a asp-action="GenerateCandidateLink" class="btn btn-danger" asp-controller="GenerateLink"> Generate Candidate Link</a>
+        </div>*@
+      
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <table id="tbl" class="table table-striped">
+
+               
+
+
+                
+
+
+    @*Respose.write "Bretval0: " + @ViewBag.Vals0
+    Respose.write "Bretval1: " + @ViewBag.Vals1
+    Respose.write "Bretval2: " + @ViewBag.Vals2*@
+    <tr>
+       
+        <td  style="padding:5px;" colspan=2> List Of Candidates already filled forms</td>
+        </tr>
+
+        <tr>
+        
+        <td  style="padding:5px;">Candidate Id</td> 
+        <td  style="padding:5px;">Candidate Name</td>
+
+        <tr id ="tbl" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals0";
+                        var sptval0 = data.split("#");
+
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                            var sptval1 = sptval0[i].split("|");
+                            for (let j = 0; j < sptval1.length - 1; j++) {
+
+                                $("#tbl").append('<tr><td>' + sptval1[0] + '</td><td>' + sptval1[1] + '</td><td></tr>');
+
+                                console.log(sptval1[0]);
+                            }
+                        }
+
+                    </script>
+        </tr>
+        </table>
+
+        
+
+</div>
+
+        @*<div class="col-md-4">
+            <table id="tbl2" class="table table-striped">
+          <tr>
+                    <td class="success" style="padding:5px;" colspan=2>List Of Candidates Partially filled the form</td>
+                
+       
+          </tr>
+                <tr>
+
+                    <td class="success" style="padding:5px;">Candidate Id</td>
+                    <td class="success" style="padding:5px;">Candidate Name</td>
+                <tr id="tbl2" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals1";
+                        var sptval0 = data.split("#");
+
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                            var sptval1 = sptval0[i].split("|");
+                            for (let j = 0; j < sptval1.length - 1; j++) {
+
+                                $("#tbl2").append('<tr><td>' + sptval1[0] + '</td><td>' + sptval1[1] + '</td><td></tr>');
+
+                                console.log(sptval1[0]);
+                            }
+                        }
+                    </script>
+                </tr>
+                </tr>
+    </table>
+    </div>*@
+
+        <div class="col-md-4">
+            <table id="tbl3" class="table table-striped">
+        <tr>
+    <td class="" style="padding:5px;" colspan=2>List Of Candidates Not intiated the process</td>
+
+    <tr>
+        
+        <td  style="padding:5px;">Candidate Id</td> 
+        <td style="padding:5px;">Candidate Name</td>
+        <tr id ="tbl3" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals2";
+                        var sptval0 = data.split("#");
+
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                            var sptval1 = sptval0[i].split("|");
+                            for (let j = 0; j < sptval1.length - 1; j++) {
+
+                                $("#tbl3").append('<tr><td>' + sptval1[0] + '</td><td>' + sptval1[1] + '</td><td></tr>');
+
+                                console.log(sptval1[0]);
+                            }
+                        }
+                    </script>
+        </tr>
+    </tr>    
+  
+
+
+</table>
+<div>
+
+                <meta http-equiv="refresh" content="5" />
+</div>
+</div>
+</div>
+</div>

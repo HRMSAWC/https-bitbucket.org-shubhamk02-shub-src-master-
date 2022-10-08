@@ -1,0 +1,137 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:black">
+        <center>Post Graduation  Details</center>
+        <form asp-action="CandidateRegisterationDetailQualification" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+          @*  <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateId" class="control-label"></label>
+                <input asp-for="CandidateId" id="txtCandidateId" class="form-control" required />
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>*@
+
+            <input asp-for="CandidateId" type="hidden" value="@ViewBag.myst" />
+
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgCourse" class="control-label">Highest Qualification</label>
+                <input asp-for="PgCourse" id="PgCourse" class="form-control" required />
+                <span asp-validation-for="PgCourse" class="text-danger"></span>
+            </div>*@
+           
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgCollegeName" class="control-label">College Name</label>
+                <input asp-for="PgCollegeName" id="PgCollegeName" class="form-control" required />
+                <span asp-validation-for="PgCollegeName" class="text-danger"></span>
+            </div>
+
+            
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgUniversity" class="control-label">Board University</label>
+                <input asp-for="PgUniversity" id="PgUniversity" class="form-control" required />
+                <span asp-validation-for="PgUniversity" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgStream" class="control-label">Stream</label>
+                <input asp-for="PgStream" id="PgStream" class="form-control" required />
+                <span asp-validation-for="PgStream" class="text-danger"></span>
+            </div>
+
+                     
+           
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="PgYearOfPassing" class="control-label">Year of Passing</label>
+                <input asp-for="PgYearOfPassing" id="PgYearOfPassing" class="form-control" required />
+                <span asp-validation-for="PgYearOfPassing" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgPercentageCgpa" class="control-label">GCP/Percentage</label>
+                <input type="text" asp-for="PgPercentageCgpa" id="PgPercentageCgpa" class="form-control" required />
+                <span asp-validation-for="PgPercentageCgpa" class="text-danger"></span>
+            </div>
+
+            @* <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="PgMarkSheet" class="control-label">Marksheet</label>
+                <input type="text" asp-for="PgMarkSheet" required class="form-control" />
+                <span asp-validation-for="PgMarkSheet" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgDegreePassingCertificate" class="control-label">Degree</label>
+                <input type="file" name="file" required asp-for="PgDegreePassingCertificate" class="form-control" />
+                <span asp-validation-for="PgDegreePassingCertificate" class="text-danger"></span>
+            </div>*@
+           
+           
+           
+            
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                @Html.ActionLink("Back", "CandidateRegisterationDetailAddress", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                <input type="submit"  class="btn btn-info" value="Save" formaction="" />
+                <!--<input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailAddress')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetail_QualificationUG", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+            </div>
+            
+        </form>
+        @if(@ViewData["reason"]==null)
+        {
+    
+        }
+        else{
+         <div class="alert alert-success text-center"> @ViewData["reason"] </div>
+         }
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.Vals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            
+            document.getElementById("PgCollegeName").value = sptval0[20];
+            document.getElementById("PgUniversity").value = sptval0[21];
+            document.getElementById("PgStream").value = sptval0[22];
+            document.getElementById("PgYearOfPassing").value = sptval0[23];
+            document.getElementById("PgPercentageCgpa").value = sptval0[24];
+        }
+
+    });
+
+</script>

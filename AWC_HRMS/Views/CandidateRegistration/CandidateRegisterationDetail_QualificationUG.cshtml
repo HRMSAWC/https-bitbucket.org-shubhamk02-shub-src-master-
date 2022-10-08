@@ -1,0 +1,139 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:black">
+        <center>Under Graduation  Details</center>
+        <form asp-action="CandidateRegisterationDetail_QualificationUG" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            <div class="form-group">
+                 <div class="space"> </div>
+               @* <label asp-for="CandidateId" class="control-label"></label>
+                <input asp-for="CandidateId" class="form-control" required />
+                <span asp-validation-for="CandidateId" class="text-danger"></span>*@
+            </div>
+
+            <input asp-for="CandidateId" type="hidden" value="@ViewBag.myst" />
+
+      @*      <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgCourse" class="control-label">Highest Qualification</label>
+                <input asp-for="UgCourse" class="form-control" required />
+                <span asp-validation-for="UgCourse" class="text-danger"></span>
+            </div>*@
+           
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgCollegeName" class="control-label">College Name</label>
+                <input asp-for="UgCollegeName" class="form-control" required />
+                <span asp-validation-for="UgCollegeName" class="text-danger"></span>
+            </div>
+
+            
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgUniversity" class="control-label">Board University</label>
+                <input asp-for="UgUniversity" class="form-control" required />
+                <span asp-validation-for="UgUniversity" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgStream" class="control-label">Stream</label>
+                <input asp-for="UgStream" class="form-control" required />
+                <span asp-validation-for="UgStream" class="text-danger"></span>
+            </div>
+
+                     
+           
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="UgYearOfPassing" class="control-label">Year of Passing</label>
+                <input asp-for="UgYearOfPassing" required class="form-control" />
+                <span asp-validation-for="UgYearOfPassing" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgPercentageCgpa" class="control-label">GCP/Percentage</label>
+                <input asp-for="UgPercentageCgpa" required class="form-control" />
+                <span asp-validation-for="UgPercentageCgpa" class="text-danger"></span>
+            </div>
+
+             @*<div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="UgMarkSheet" class="control-label">Marksheet</label>
+                <input type="file" asp-for="UgMarkSheet" required class="form-control" />
+                <span asp-validation-for="UgMarkSheet" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgDegreePassingCertificate" class="control-label">Degree</label>
+                <input type="file" name="file" required asp-for="UgDegreePassingCertificate" class="form-control" />
+                <span asp-validation-for="UgDegreePassingCertificate" class="text-danger"></span>
+            </div>*@
+           
+           
+           
+            
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                @Html.ActionLink("Back", "CandidateRegisterationDetailQualification", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                <input type="submit"  class="btn btn-info" value="Save" formaction="" />
+                <!--<input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationQualification')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetail_Qualification12", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+            </div>
+             </br>
+        </form>
+                @if(@ViewData["reason"]==null)
+{
+    
+}
+else{
+<div class="alert alert-success text-center">@ViewData["reason"]</div>
+}
+   
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.Vals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            //document.getElementById("PgCourse").value = sptval0[1];
+            document.getElementById("UgCollegeName").value = sptval0[13];
+            document.getElementById("UgUniversity").value = sptval0[14];
+            document.getElementById("UgStream").value = sptval0[15];
+            document.getElementById("UgYearOfPassing").value = sptval0[16];
+            document.getElementById("UgPercentageCgpa").value = sptval0[17];
+        }
+
+    });
+
+</script>
+
